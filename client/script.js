@@ -1,4 +1,4 @@
-import bot from  './assets/bot.svg';
+import bot from './assets/bot.svg';
 import user from './assets/user.svg';
 
 const form = document.querySelector("form");
@@ -7,26 +7,27 @@ const chatContainer = document.querySelector("#chat-container");
 let loadInterval;
 
 function loader(element){
-  element.textContent = "";
-  loadInterval = setInterval(() => {
-    element.textContent += ".";
-  
+  element.textContent = '';
 
-  if (element.textContent === "....") {
-    element.textContent = "";
+  loadInterval = setInterval(() => {
+    element.textContent += '.';
+  
+  if (element.textContent === '....') {
+    element.textContent = '';
   }
 }, 300)
 }
 
 function typeText(element, text) {
   let i = 0;
-  const interval = setInterval(() => {
-    element.textContent += text[i];
-    i++;
-    if (i === text.length) {
+  let interval = setInterval(() => {
+    if(i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+    } else {
       clearInterval(interval);
     }
-  }, 20);
+}, 20);
 }
 
 function generetaUniqueID() {
@@ -76,7 +77,7 @@ const handleSubmit = async(e) => {
 
 form.addEventListener("submit", handleSubmit);
 form.addEventListener("keyup", (e) => {
-  if (e.keyCode === 13) {
+  if (event.key === 'Enter' ) {
     handleSubmit(e);
   }
 });
