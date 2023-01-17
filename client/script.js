@@ -36,8 +36,8 @@ function typeText(element, text) {
 
 //function that generates a unique ID for each chat stripe
 
-function generetaUniqueID() {
-  const timestamp = new Date().getTime();
+function generateUniqueID() {
+  const timestamp = Date.now();
   const randomNum = Math.random();
   const hexadecimalString = randomNum.toString(16);
 
@@ -75,7 +75,7 @@ const handleSubmit = async(e) => {
   form.reset();
 
   //Bot Chatstripe 
-  const uniqueID = generetaUniqueID();
+  const uniqueID = generateUniqueID();
   chatContainer.innerHTML += chatStripe(true, " ", uniqueID);
   
   chatContainer.scrollTop = chatContainer.scrollHeight;
