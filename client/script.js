@@ -6,6 +6,8 @@ const chatContainer = document.querySelector("#chat-container");
 
 let loadInterval;
 
+//function that adds three dots while the bot typing
+
 function loader(element){
   element.textContent = '';
 
@@ -17,6 +19,8 @@ function loader(element){
   }
 }, 300)
 }
+
+//function that types out the bot's response
 
 function typeText(element, text) {
   let i = 0;
@@ -30,6 +34,8 @@ function typeText(element, text) {
 }, 20);
 }
 
+//function that generates a unique ID for each chat stripe
+
 function generetaUniqueID() {
   const timestamp = new Date().getTime();
   const randomNum = Math.random();
@@ -38,6 +44,8 @@ function generetaUniqueID() {
   return `id-${timestamp}-${hexadecimalString}`;
 }
 
+//function that creates the chat stripe and returns it as a html element
+
 function chatStripe(isAI, value, uniqueID){
   return (
 
@@ -45,16 +53,18 @@ function chatStripe(isAI, value, uniqueID){
   <div class="wrapper ${isAI && "ai"}">
     <div class="chat">
       <duv className="profile">
-        <img src="${isAI ? bot : user}"
-             alt="${isAI ? bot : user}" />
+        <img src="${isAI ?  bot :  user}"
+             alt="${isAI ? 'bot' : 'bot'}" />
      </div>
 
-  <div class="message" id="${uniqueID}>${value}"</div>
+  <div class="message" id=${uniqueID}>${value}</div>
     </div>
   </div>
   `
   )
 }
+
+//function that handles the submit event
 
 const handleSubmit = async(e) => {
   e.preventDefault();
